@@ -1,0 +1,87 @@
+Imports System.ComponentModel.DataAnnotations
+
+Namespace DAL.Modelos
+	Partial Public Class Boletos
+		Public Enum Campos
+			ID
+			IDSERVICO
+			IDCedente
+			IDSacado
+			IDRemessa
+			IDRetorno
+			EspecieDocumento
+			NumeroDocumento
+			NossoNumero
+			DataGeracao
+			DataProcessamento
+			DataEmissao
+			DataVencimento
+			Valor
+			DataPagamento
+			ValorPago
+			NumeroControle
+			Aceite
+			PercentualMulta
+			PercentualJurosDia
+			DataDesconto
+			ValorDesconto
+			MensagemInstrucaoCaixa
+			MensagemRemessa
+			Instrucao1
+			InstrucaoAux1
+			Instrucao2
+			InstrucaoAux2
+			Instrucao3
+			InstrucaoAux3
+			ImprimirValoresAuxiliares
+			NomeArquivo
+			Arquivo
+			IDStatus
+		End Enum
+		<Required>
+		Public Property ID As Long
+		<Required>
+		Public Property IDSERVICO As Long
+		<Required>
+		Public Property IDCedente As Long
+		<Required>
+		Public Property IDSacado As Long
+		Public Property IDRemessa As Long?
+		Public Property IDRetorno As Long?
+		<Required>
+		Public Property EspecieDocumento As String
+		Public Property NumeroDocumento As String
+		Public Property NossoNumero As String
+		<Required>
+		Public Property DataGeracao As DateTime
+		Public Property DataProcessamento As DateTime
+		Public Property DataEmissao As DateTime
+		<Required>
+		Public Property DataVencimento As DateTime
+		<Required>
+		Public Property Valor As Double
+		Public Property DataPagamento As DateTime
+		Public Property ValorPago As Double?
+		Public Property NumeroControle As String
+		Public Property Aceite As String
+		Public Property PercentualMulta As Double?
+		Public Property PercentualJurosDia As Double?
+		Public Property DataDesconto As String
+		Public Property ValorDesconto As Double?
+		Public Property MensagemInstrucaoCaixa As String
+		Public Property MensagemRemessa As String
+		Public Property Instrucao1 As String
+		Public Property InstrucaoAux1 As String
+		Public Property Instrucao2 As String
+		Public Property InstrucaoAux2 As String
+		Public Property Instrucao3 As String
+		Public Property InstrucaoAux3 As String
+		Public Property ImprimirValoresAuxiliares As Integer?
+		<Required>
+		Public Property NomeArquivo As String
+		<Required>
+		Public Property Arquivo As Byte()
+		<Required>
+		Public Property IDStatus As Long
+	End Class
+End Namespace

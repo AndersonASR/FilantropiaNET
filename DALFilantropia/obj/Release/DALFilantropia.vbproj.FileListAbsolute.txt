@@ -1,0 +1,10 @@
+D:\Desenvolvimento\Filantropia\DALFilantropia\bin\Release\DALFilantropia.dll
+D:\Desenvolvimento\Filantropia\DALFilantropia\bin\Release\DALFilantropia.pdb
+D:\Desenvolvimento\Filantropia\DALFilantropia\bin\Release\DALFilantropia.xml
+D:\Desenvolvimento\Filantropia\DALFilantropia\obj\Release\DALFilantropia.vbprojAssemblyReference.cache
+D:\Desenvolvimento\Filantropia\DALFilantropia\obj\Release\DALFilantropia.Resources.resources
+D:\Desenvolvimento\Filantropia\DALFilantropia\obj\Release\DALFilantropia.vbproj.GenerateResource.cache
+D:\Desenvolvimento\Filantropia\DALFilantropia\obj\Release\DALFilantropia.vbproj.CoreCompileInputs.cache
+D:\Desenvolvimento\Filantropia\DALFilantropia\obj\Release\DALFilantropia.dll
+D:\Desenvolvimento\Filantropia\DALFilantropia\obj\Release\DALFilantropia.xml
+D:\Desenvolvimento\Filantropia\DALFilantropia\obj\Release\DALFilantropia.pdb

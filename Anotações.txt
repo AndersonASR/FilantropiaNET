@@ -1,0 +1,4 @@
+- Implementar um controle de usuários de forma determinar quais áreas um usuário terá acesso;
+- Implementar um Log de acesso;
+- Avaliar o caso de "Fichas Voltadas" (Situação em que é necessário re-agendar uma coleta exporádica;
+- No caso do agendamento não precisa se preocupar em ter vários. Sempre retornar apenas o último;

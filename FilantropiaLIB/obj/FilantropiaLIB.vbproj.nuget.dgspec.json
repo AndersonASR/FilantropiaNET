@@ -1,0 +1,82 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Desenvolvimento\\Filantropia\\FilantropiaLIB\\FilantropiaLIB.vbproj": {}
+  },
+  "projects": {
+    "D:\\Desenvolvimento\\Filantropia\\DALGenerica\\DALGenerica\\DALGenerica.vbproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Desenvolvimento\\Filantropia\\DALGenerica\\DALGenerica\\DALGenerica.vbproj",
+        "projectName": "DALGenerica",
+        "projectPath": "D:\\Desenvolvimento\\Filantropia\\DALGenerica\\DALGenerica\\DALGenerica.vbproj"
+      },
+      "frameworks": {
+        "net452": {}
+      }
+    },
+    "D:\\Desenvolvimento\\Filantropia\\FilantropiaLIB\\FilantropiaLIB.vbproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Desenvolvimento\\Filantropia\\FilantropiaLIB\\FilantropiaLIB.vbproj",
+        "projectName": "FilantropiaLIB",
+        "projectPath": "D:\\Desenvolvimento\\Filantropia\\FilantropiaLIB\\FilantropiaLIB.vbproj",
+        "packagesPath": "C:\\Users\\ander\\.nuget\\packages\\",
+        "outputPath": "D:\\Desenvolvimento\\Filantropia\\FilantropiaLIB\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ander\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "D:\\Desenvolvimento\\Filantropia\\DALGenerica\\DALGenerica\\DALGenerica.vbproj": {
+                "projectPath": "D:\\Desenvolvimento\\Filantropia\\DALGenerica\\DALGenerica\\DALGenerica.vbproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

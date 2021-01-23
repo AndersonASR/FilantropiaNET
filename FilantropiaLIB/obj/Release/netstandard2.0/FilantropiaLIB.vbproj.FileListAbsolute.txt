@@ -1,0 +1,14 @@
+D:\Desenvolvimento\Filantropia\FilantropiaLIB\bin\Release\netstandard2.0\FilantropiaLIB.deps.json
+D:\Desenvolvimento\Filantropia\FilantropiaLIB\bin\Release\netstandard2.0\FilantropiaLIB.dll
+D:\Desenvolvimento\Filantropia\FilantropiaLIB\bin\Release\netstandard2.0\FilantropiaLIB.pdb
+D:\Desenvolvimento\Filantropia\FilantropiaLIB\bin\Release\netstandard2.0\DALGenerica.dll
+D:\Desenvolvimento\Filantropia\FilantropiaLIB\bin\Release\netstandard2.0\DALGenerica.pdb
+D:\Desenvolvimento\Filantropia\FilantropiaLIB\bin\Release\netstandard2.0\DALGenerica.xml
+D:\Desenvolvimento\Filantropia\FilantropiaLIB\bin\Release\netstandard2.0\DALGenerica.dll.config
+D:\Desenvolvimento\Filantropia\FilantropiaLIB\obj\Release\netstandard2.0\FilantropiaLIB.vbprojAssemblyReference.cache
+D:\Desenvolvimento\Filantropia\FilantropiaLIB\obj\Release\netstandard2.0\FilantropiaLIB.AssemblyInfoInputs.cache
+D:\Desenvolvimento\Filantropia\FilantropiaLIB\obj\Release\netstandard2.0\FilantropiaLIB.AssemblyInfo.vb
+D:\Desenvolvimento\Filantropia\FilantropiaLIB\obj\Release\netstandard2.0\FilantropiaLIB.vbproj.CoreCompileInputs.cache
+D:\Desenvolvimento\Filantropia\FilantropiaLIB\obj\Release\netstandard2.0\FilantropiaLIB.vbproj.CopyComplete
+D:\Desenvolvimento\Filantropia\FilantropiaLIB\obj\Release\netstandard2.0\FilantropiaLIB.dll
+D:\Desenvolvimento\Filantropia\FilantropiaLIB\obj\Release\netstandard2.0\FilantropiaLIB.pdb
