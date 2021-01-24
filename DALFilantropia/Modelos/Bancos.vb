@@ -6,7 +6,7 @@ Namespace DAL.Modelos
 			ID
 			Numero
 			BANCO
-			[Alias]
+			Apelido
 		End Enum
 
 		<Required>
@@ -15,6 +15,6 @@ Namespace DAL.Modelos
 		Public Property Numero As Int64
 		<Required>
 		Public Property Banco As String
-		Public Property [Alias] As String
+		Public Property Apelido As String
 	End Class
 End Namespace
