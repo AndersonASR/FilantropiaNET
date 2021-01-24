@@ -1,0 +1,4 @@
+D:\Desenvolvimento\Filantropia\Filantropia\FilantropiaNET\obj\Debug\FilantropiaNET.vbprojAssemblyReference.cache
+D:\Desenvolvimento\Filantropia\Filantropia\FilantropiaNET\obj\Debug\FilantropiaNET.Resources.resources
+D:\Desenvolvimento\Filantropia\Filantropia\FilantropiaNET\obj\Debug\FilantropiaNET.vbproj.GenerateResource.cache
+D:\Desenvolvimento\Filantropia\Filantropia\FilantropiaNET\obj\Debug\FilantropiaNET.vbproj.CoreCompileInputs.cache

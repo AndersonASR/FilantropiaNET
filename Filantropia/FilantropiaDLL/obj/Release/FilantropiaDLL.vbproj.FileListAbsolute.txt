@@ -1,0 +1,14 @@
+D:\Desenvolvimento\Filantropia\Filantropia\FilantropiaDLL\bin\Release\FilantropiaDLL.dll
+D:\Desenvolvimento\Filantropia\Filantropia\FilantropiaDLL\bin\Release\FilantropiaDLL.pdb
+D:\Desenvolvimento\Filantropia\Filantropia\FilantropiaDLL\bin\Release\FilantropiaDLL.xml
+D:\Desenvolvimento\Filantropia\Filantropia\FilantropiaDLL\bin\Release\DALFilantropia.dll
+D:\Desenvolvimento\Filantropia\Filantropia\FilantropiaDLL\bin\Release\DALFilantropia.pdb
+D:\Desenvolvimento\Filantropia\Filantropia\FilantropiaDLL\bin\Release\DALFilantropia.xml
+D:\Desenvolvimento\Filantropia\Filantropia\FilantropiaDLL\obj\Release\FilantropiaDLL.vbprojAssemblyReference.cache
+D:\Desenvolvimento\Filantropia\Filantropia\FilantropiaDLL\obj\Release\FilantropiaDLL.Resources.resources
+D:\Desenvolvimento\Filantropia\Filantropia\FilantropiaDLL\obj\Release\FilantropiaDLL.vbproj.GenerateResource.cache
+D:\Desenvolvimento\Filantropia\Filantropia\FilantropiaDLL\obj\Release\FilantropiaDLL.vbproj.CoreCompileInputs.cache
+D:\Desenvolvimento\Filantropia\Filantropia\FilantropiaDLL\obj\Release\FilantropiaDLL.vbproj.CopyComplete
+D:\Desenvolvimento\Filantropia\Filantropia\FilantropiaDLL\obj\Release\FilantropiaDLL.dll
+D:\Desenvolvimento\Filantropia\Filantropia\FilantropiaDLL\obj\Release\FilantropiaDLL.xml
+D:\Desenvolvimento\Filantropia\Filantropia\FilantropiaDLL\obj\Release\FilantropiaDLL.pdb
