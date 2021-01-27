@@ -17,7 +17,7 @@
                         <li>@Html.ActionLink("Colaboradores", "Colaboradores", "Colaboradores")</li>
                         <li>@Html.ActionLink("Chamadas Telefonicas", "Ligacoes", "Ligacoes")</li>
                         <li class="nav-divider"></li>
-                        <li>@Html.ActionLink("Telefones", "Telefones", "Telefones")</li>
+                        <li>@Html.ActionLink("Telefones", actionName:="Telefones", controllerName:="Telefones", routeValues:=New With {.id = 0}, htmlAttributes:=Nothing)</li>
                         <li class="nav-divider"></li>
                         <li>@Html.ActionLink("Funcionários", "Funcionarios", "Funcionarios")</li>
                         <li class="nav-divider"></li>

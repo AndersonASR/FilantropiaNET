@@ -209,8 +209,12 @@ Namespace DAL
 								If (Not prop Is Nothing) Then
 									If tipo.Trim.ToUpper.Contains("DECIMAL") Or tipo.Trim.ToUpper.Contains("FLOAT") Or tipo.Trim.ToUpper.Contains("DOUBLE") Then
 										prop.SetValue(instance, Convert.ToDouble(p_reader(coluna)), Nothing)
-									ElseIf tipo.ToUpper.Contains("INT") Then
+									ElseIf tipo.ToUpper.Contains("INT64") Then
 										prop.SetValue(instance, Convert.ToInt64(p_reader(coluna)), Nothing)
+									ElseIf tipo.ToUpper.Contains("INT32") Then
+										prop.SetValue(instance, Convert.ToInt32(p_reader(coluna)), Nothing)
+									ElseIf tipo.ToUpper.Contains("INT16") Then
+										prop.SetValue(instance, Convert.ToInt16(p_reader(coluna)), Nothing)
 									ElseIf prop.PropertyType.Name.ToUpper.Contains("DATE") Then
 										If IsDate(p_reader(coluna)) Then
 											prop.SetValue(instance, Convert.ToDateTime(p_reader(coluna)), Nothing)

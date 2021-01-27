@@ -43,6 +43,24 @@ Namespace Componentes
 
 		End Function
 
+		Public Function Obter(ID As Int64) As FormaPagamento
+			Dim TP As FormaPagamento = Nothing
+
+			RFormasPagamentos.LimparParametros()
+			RFormasPagamentos.AdicionarParametro(DALFilantropia.DAL.Modelos.FormasPagamentos.Campos.ID.ToString, DALFilantropia.DAL.Enumeradores.CompareType.Como, ID)
+			LFormasPagamentos = RFormasPagamentos.Obter
+
+			If LFormasPagamentos.Count > 0 Then
+
+				TP = New FormaPagamento
+
+				Popular(LFormasPagamentos(0), TP)
+			End If
+
+			Return TP
+
+		End Function
+
 		Public Function Obter(Nome As String) As FormaPagamento
 			Dim TP As FormaPagamento = Nothing
 

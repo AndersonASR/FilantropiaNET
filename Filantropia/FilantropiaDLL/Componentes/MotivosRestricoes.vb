@@ -40,6 +40,24 @@ Namespace Componentes
 
 		End Function
 
+		Public Function Obter(ID As Int64) As MotivoRestricao
+			Dim TP As MotivoRestricao = Nothing
+
+			RMotivosRestricoes.LimparParametros()
+			RMotivosRestricoes.AdicionarParametro(DALFilantropia.DAL.Modelos.MotivosRestricoes.Campos.ID.ToString, DALFilantropia.DAL.Enumeradores.CompareType.Como, ID)
+			LMotivosRestricoes = RMotivosRestricoes.Obter
+
+			If LMotivosRestricoes.Count > 0 Then
+
+				TP = New MotivoRestricao
+
+				Popular(LMotivosRestricoes(0), TP)
+			End If
+
+			Return TP
+
+		End Function
+
 		Public Function Obter(Nome As String) As MotivoRestricao
 			Dim TP As MotivoRestricao = Nothing
 

@@ -25,12 +25,43 @@ Namespace Componentes
 			RPessoasTelefones = New DAL.Repositorio.RepositorioGenerico(Of DALFilantropia.DAL.Modelos.PessoasTelefones)(DAL.Enumeradores.enumBD.SQLSERVER, Conexao)
 		End Sub
 
-		Public Function ObterIDsTelefones(IDPessoa As Int64) As List(Of Int64)
+		Public Function ObterTodos(Optional IDPessoa As Int64 = 0) As List(Of PessoaTelefone)
+			Dim R As List(Of PessoaTelefone) = Nothing
+
+			RPessoasTelefones.LimparParametros()
+			If IDPessoa > 0 Then
+				RPessoasTelefones.AdicionarParametro(DAL.Modelos.PessoasTelefones.Campos.IDPessoa.ToString, CompareType.Igual, IDPessoa)
+				LPessoasTelefones = RPessoasTelefones.Obter
+			Else
+				LPessoasTelefones = RPessoasTelefones.ObterTodos
+			End If
+
+
+			If LPessoasTelefones.Count > 0 Then
+
+				R = New List(Of PessoaTelefone)
+
+				For Each PT As Modelos.PessoasTelefones In LPessoasTelefones
+					Dim Dado As New PessoaTelefone
+					Popular(PT, Dado)
+					R.Add(Dado)
+				Next
+
+			End If
+
+			Return R
+		End Function
+
+		Public Function ObterIDsTelefones(Optional IDPessoa As Int64 = 0) As List(Of Int64)
 			Dim TP As List(Of Int64) = Nothing
 
 			RPessoasTelefones.LimparParametros()
-			RPessoasTelefones.AdicionarParametro(DAL.Modelos.PessoasTelefones.Campos.IDPessoa.ToString, CompareType.Igual, IDPessoa)
-			LPessoasTelefones = RPessoasTelefones.Obter
+			If IDPessoa = 0 Then
+				LPessoasTelefones = RPessoasTelefones.ObterTodos
+			Else
+				RPessoasTelefones.AdicionarParametro(DAL.Modelos.PessoasTelefones.Campos.IDPessoa.ToString, CompareType.Igual, IDPessoa)
+				LPessoasTelefones = RPessoasTelefones.Obter
+			End If
 
 			If LPessoasTelefones.Count > 0 Then
 
@@ -71,6 +102,23 @@ Namespace Componentes
 			RPessoasTelefones.LimparParametros()
 			RPessoasTelefones.AdicionarParametro(DAL.Modelos.PessoasTelefones.Campos.IDPessoa.ToString, CompareType.Igual, IDPessoa)
 			RPessoasTelefones.AdicionarParametro(DAL.Modelos.PessoasTelefones.Campos.IDTelefone.ToString, CompareType.Igual, IDTelefone)
+			LPessoasTelefones = RPessoasTelefones.Obter
+
+			If LPessoasTelefones.Count > 0 Then
+
+				R = New PessoaTelefone
+
+				Popular(LPessoasTelefones(0), R)
+			End If
+
+			Return R
+		End Function
+
+		Public Function Obter(IDPessoa As Int64) As PessoaTelefone
+			Dim R As PessoaTelefone = Nothing
+
+			RPessoasTelefones.LimparParametros()
+			RPessoasTelefones.AdicionarParametro(DAL.Modelos.PessoasTelefones.Campos.IDPessoa.ToString, CompareType.Igual, IDPessoa)
 			LPessoasTelefones = RPessoasTelefones.Obter
 
 			If LPessoasTelefones.Count > 0 Then

@@ -41,16 +41,19 @@ Namespace Componentes
 
 		End Function
 
-		Public Function Obter(ID As Int64) As String
-			Dim EstadoCivil As String = ""
+		Public Function Obter(ID As Int64) As EstadoCivil
+			Dim EC As EstadoCivil = Nothing
 
 			REstadosCivis.LimparParametros()
 			REstadosCivis.AdicionarParametro(DAL.Modelos.EstadosCivis.Campos.ID.ToString, CompareType.Igual, ID)
 			LEstadosCivis = REstadosCivis.Obter
 
-			If LEstadosCivis.Count > 0 Then EstadoCivil = LEstadosCivis(0).EstadoCivil
+			If LEstadosCivis.Count > 0 Then
+				EC = New EstadoCivil
+				Popular(LEstadosCivis(0), EC)
+			End If
 
-			Return EstadoCivil
+			Return EC
 		End Function
 
 		Public Function InserirNovo(Dados As EstadoCivil) As Boolean

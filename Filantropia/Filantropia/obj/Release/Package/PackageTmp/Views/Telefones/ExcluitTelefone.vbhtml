@@ -11,13 +11,6 @@ End Code
     <h4>Telefone</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.IDPessoa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.IDPessoa)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(Function(model) model.DDD)
@@ -65,22 +58,6 @@ End Code
 
         <dd>
             @Html.DisplayFor(Function(model) model.WhatsApp)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.DataRegistro)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.DataRegistro)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.IDResponsavelCadastro)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.IDResponsavelCadastro)
         </dd>
 
     </dl>

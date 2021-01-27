@@ -17,6 +17,8 @@
                         <li>@Html.ActionLink("Colaboradores", "Colaboradores", "Colaboradores")</li>
                         <li>@Html.ActionLink("Chamadas Telefonicas", "Ligacoes", "Ligacoes")</li>
                         <li class="nav-divider"></li>
+                        <li>@Html.ActionLink("Telefones", actionName:="Telefones", controllerName:="Telefones", routeValues:=New With {.id = 0}, htmlAttributes:=Nothing)</li>
+                        <li class="nav-divider"></li>
                         <li>@Html.ActionLink("Funcionários", "Funcionarios", "Funcionarios")</li>
                         <li class="nav-divider"></li>
                         <li>@Html.ActionLink("Tipos de Pessoas", "TiposPessoas", "TiposPessoas")</li>
@@ -33,7 +35,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>@Html.ActionLink("Agendamentos", "Agendamentos", "Agendamentos")</li>
-                        <li>@Html.ActionLink("Movimentos", "Movimentos", "Movimentos")</li>
+                        <li>@Html.ActionLink("Movimentos Financeiros", "Movimentos", "Movimentos")</li>
                     </ul>
                 </li>
                 <li>

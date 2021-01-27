@@ -38,8 +38,8 @@ End Code
                     @Html.DisplayFor(Function(modelItem) item.DataRestricao)
                 </td>
                 <td>
-                    @Html.ActionLink("Endereços", "Enderecos", "Enderecos", New With {.id = item.ID}) |
-                    @Html.ActionLink("Telefones", "Telefones", "Telefones", New With {.id = item.ID})
+                    @Html.ActionLink("Endereços", actionName:="Enderecos", controllerName:="Enderecos", routeValues:=New With {.id = item.IDPessoa}, htmlAttributes:=Nothing) |
+                    @Html.ActionLink("Telefones", actionName:="Telefones", controllerName:="Telefones", routeValues:=New With {.id = item.IDPessoa}, htmlAttributes:=Nothing)
                 </td>
                 <td>
                     @Html.ActionLink("Alterar", "AlterarColaborador", New With {.id = item.ID}) |

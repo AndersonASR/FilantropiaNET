@@ -41,6 +41,24 @@ Namespace Componentes
 
 		End Function
 
+		Public Function Obter(ID As Int64) As Periodicidade
+			Dim TP As Periodicidade = Nothing
+
+			RPeriodicidades.LimparParametros()
+			RPeriodicidades.AdicionarParametro(DALFilantropia.DAL.Modelos.Periodicidades.Campos.ID.ToString, DALFilantropia.DAL.Enumeradores.CompareType.Como, ID)
+			LPeriodicidades = RPeriodicidades.Obter
+
+			If LPeriodicidades.Count > 0 Then
+
+				TP = New Periodicidade
+
+				Popular(LPeriodicidades(0), TP)
+			End If
+
+			Return TP
+
+		End Function
+
 		Public Function Obter(Nome As String) As Periodicidade
 			Dim TP As Periodicidade = Nothing
 

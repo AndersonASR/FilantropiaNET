@@ -26,8 +26,8 @@ End Code
                         @Html.DisplayFor(Function(modelItem) item.FormaPagamento)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", New With {.id = item.ID}) |
-                        @Html.ActionLink("Delete", "Delete", New With {.id = item.ID})
+                        @Html.ActionLink("Alterar", "AlterarFormaPagamento", New With {.id = item.ID}) |
+                        @Html.ActionLink("Excluir", "ExcluirFormaPagamento", New With {.id = item.ID})
                     </td>
                 </tr>
             Next

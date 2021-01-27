@@ -11,6 +11,7 @@ Namespace Controllers
         End Function
 
         ' GET: Funcionarios/Details/5
+        <Route("Funcionarios/DetalheFuncionario/{id}")>
         Function DetalhesFuncionario(ByVal id As Integer) As ActionResult
             Return View(Filantropia.Funcionarios.Obter(id))
         End Function

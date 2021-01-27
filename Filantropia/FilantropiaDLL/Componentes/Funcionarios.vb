@@ -8,7 +8,7 @@ Namespace Componentes
 	Partial Public Class Funcionario
 		Public Property ID As Long
 		<Display(Name:="CPF ou CNPJ")>
-		Public Property CPFCNPJ As Long
+		Public Property CPFCNPJ As String
 		Public Property Nome As String
 		<Display(Name:="Data de Admissão")>
 		Public Property DataAdmissao As DateTime
@@ -87,9 +87,11 @@ Namespace Componentes
 					Dim T As New Funcionario
 
 					Popular(LFuncionarios(X), T)
-					'T.ID = LFuncionarios(X).ID
-					'T.Funcionario = LFuncionarios(X).Funcionario
-					'T.Alias = LFuncionarios(X).Alias
+
+					Dim P As Pessoa = Pessoas.Obter(T.IDPessoa)
+
+					Popular(P, T, "ID")
+
 					TP.Add(T)
 				Next
 			End If
@@ -115,13 +117,14 @@ Namespace Componentes
 
 				F = New Funcionario
 				F.ID = LF.ID
+				F.IDPessoa = LF.IDPessoa
 				F.Ativo = LF.Ativo
 				F.CPFCNPJ = LPessoas(0).CPFCNPJ
 				F.DataAdmissao = LF.DataAdmissao
 				F.DataDesligamento = LF.DataDesligamento
 				F.TipoFuncionario = Tipos.Obter(LF.IDTipoFuncionario)
-				F.Enderecos = Ender.Obter(LF.IDPessoa)
-				F.EstadoCivil = EC.Obter(LPessoas(0).IDEstadoCivil)
+				F.Enderecos = Ender.ObterTodos(LF.IDPessoa)
+				F.EstadoCivil = EC.Obter(LPessoas(0).IDEstadoCivil).EstadoCivil
 				F.IDResponsavelCadastro = LF.IDResponsavelCadastro
 				F.Nome = LPessoas(0).Nome
 				F.Telefones = Tel.ObterTodos(LF.IDPessoa)

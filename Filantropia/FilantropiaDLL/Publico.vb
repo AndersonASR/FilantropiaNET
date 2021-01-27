@@ -1,5 +1,5 @@
 ﻿Module Publico
-	Public Sub Popular(ByRef Origem As Object, ByRef Destino As Object)
+	Public Sub Popular(ByRef Origem As Object, ByRef Destino As Object, Optional NaoPreencher As String = "")
 		Dim TOrigem As Type = Origem.GetType
 		Dim InfoOrigem() As System.Reflection.PropertyInfo = TOrigem.GetProperties
 		Dim TDestino As Type = Destino.GetType
@@ -7,7 +7,7 @@
 
 		For Each P1 As System.Reflection.PropertyInfo In InfoOrigem
 			For Each P2 As System.Reflection.PropertyInfo In InfoDestino
-				If P1.Name = P2.Name And P1.PropertyType.Name = P2.PropertyType.Name Then
+				If P1.Name = P2.Name And P1.PropertyType.Name = P2.PropertyType.Name And Not NaoPreencher.Trim.ToUpper.Contains(P1.Name.Trim.ToUpper) Then
 					P2.SetValue(Destino, P1.GetValue(Origem), Nothing)
 					Exit For
 				End If

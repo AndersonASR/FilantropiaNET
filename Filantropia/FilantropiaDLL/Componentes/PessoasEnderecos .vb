@@ -22,11 +22,61 @@ Namespace Componentes
 			RPessoasEnderecos = New DAL.Repositorio.RepositorioGenerico(Of DALFilantropia.DAL.Modelos.PessoasEnderecos)(DAL.Enumeradores.enumBD.SQLSERVER, Conexao)
 		End Sub
 
-		Public Function Obter(IDPessoa As Int64, IDEndereco As Int64) As List(Of Int64)
+		Public Function ObterTodos(Optional IDPessoa As Int64 = 0) As List(Of PessoaEndereco)
+			Dim R As List(Of PessoaEndereco) = Nothing
+
+			RPessoasEnderecos.LimparParametros()
+			If IDPessoa > 0 Then
+				RPessoasEnderecos.AdicionarParametro(DAL.Modelos.PessoasEnderecos.Campos.IDPessoa.ToString, CompareType.Igual, IDPessoa)
+				LPessoasEnderecos = RPessoasEnderecos.Obter
+			Else
+				LPessoasEnderecos = RPessoasEnderecos.ObterTodos
+			End If
+
+
+			If LPessoasEnderecos.Count > 0 Then
+
+				R = New List(Of PessoaEndereco)
+
+				For Each PT As Modelos.PessoasEnderecos In LPessoasEnderecos
+					Dim Dado As New PessoaEndereco
+					Popular(PT, Dado)
+					R.Add(Dado)
+				Next
+
+			End If
+
+			Return R
+		End Function
+
+		Public Function ObterIDsEnderecos(Optional IDPessoa As Int64 = 0) As List(Of Int64)
 			Dim TP As List(Of Int64) = Nothing
 
 			RPessoasEnderecos.LimparParametros()
-			RPessoasEnderecos.AdicionarParametro(DAL.Modelos.PessoasEnderecos.Campos.IDPessoa.ToString, CompareType.Igual, IDPessoa)
+			If IDPessoa = 0 Then
+				LPessoasEnderecos = RPessoasEnderecos.ObterTodos
+			Else
+				RPessoasEnderecos.AdicionarParametro(DAL.Modelos.PessoasEnderecos.Campos.IDPessoa.ToString, CompareType.Igual, IDPessoa)
+				LPessoasEnderecos = RPessoasEnderecos.Obter
+			End If
+
+			If LPessoasEnderecos.Count > 0 Then
+
+				TP = New List(Of Int64)
+
+				For X As Int16 = 0 To LPessoasEnderecos.Count - 1
+					TP.Add(LPessoasEnderecos(X).IDEndereco)
+				Next
+			End If
+
+			Return TP
+
+		End Function
+
+		Public Function ObterIDsPessoas(IDEndereco As Int64) As List(Of Int64)
+			Dim TP As List(Of Int64) = Nothing
+
+			RPessoasEnderecos.LimparParametros()
 			RPessoasEnderecos.AdicionarParametro(DAL.Modelos.PessoasEnderecos.Campos.IDEndereco.ToString, CompareType.Igual, IDEndereco)
 			LPessoasEnderecos = RPessoasEnderecos.Obter
 
@@ -43,8 +93,26 @@ Namespace Componentes
 
 		End Function
 
-		Public Function ObterPorIDPessoa(IDPessoa As Int64) As List(Of Int64)
-			Dim TP As List(Of Int64) = Nothing
+		Public Function Obter(IDPessoa As Int64, IDEndereco As Int64) As PessoaEndereco
+			Dim R As PessoaEndereco = Nothing
+
+			RPessoasEnderecos.LimparParametros()
+			RPessoasEnderecos.AdicionarParametro(DAL.Modelos.PessoasEnderecos.Campos.IDPessoa.ToString, CompareType.Igual, IDPessoa)
+			RPessoasEnderecos.AdicionarParametro(DAL.Modelos.PessoasEnderecos.Campos.IDEndereco.ToString, CompareType.Igual, IDEndereco)
+			LPessoasEnderecos = RPessoasEnderecos.Obter
+
+			If LPessoasEnderecos.Count > 0 Then
+
+				R = New PessoaEndereco
+
+				Popular(LPessoasEnderecos(0), R)
+			End If
+
+			Return R
+		End Function
+
+		Public Function Obter(IDPessoa As Int64) As PessoaEndereco
+			Dim R As PessoaEndereco = Nothing
 
 			RPessoasEnderecos.LimparParametros()
 			RPessoasEnderecos.AdicionarParametro(DAL.Modelos.PessoasEnderecos.Campos.IDPessoa.ToString, CompareType.Igual, IDPessoa)
@@ -52,35 +120,12 @@ Namespace Componentes
 
 			If LPessoasEnderecos.Count > 0 Then
 
-				TP = New List(Of Int64)
+				R = New PessoaEndereco
 
-				For X As Int16 = 0 To LPessoasEnderecos.Count - 1
-					TP.Add(LPessoasEnderecos(X).IDEndereco)
-				Next
+				Popular(LPessoasEnderecos(0), R)
 			End If
 
-			Return TP
-
-		End Function
-
-		Public Function ObterPorIDEndereco(IDEndereco As Int64) As List(Of Int64)
-			Dim TP As List(Of Int64) = Nothing
-
-			RPessoasEnderecos.LimparParametros()
-			RPessoasEnderecos.AdicionarParametro(DAL.Modelos.PessoasEnderecos.Campos.IDEndereco.ToString, CompareType.Igual, IDEndereco)
-			LPessoasEnderecos = RPessoasEnderecos.Obter
-
-			If LPessoasEnderecos.Count > 0 Then
-
-				TP = New List(Of Int64)
-
-				For X As Int16 = 0 To LPessoasEnderecos.Count - 1
-					TP.Add(LPessoasEnderecos(X).IDEndereco)
-				Next
-			End If
-
-			Return TP
-
+			Return R
 		End Function
 
 		Public Function InserirNovo(Dados As PessoaEndereco) As Boolean
@@ -123,8 +168,11 @@ Namespace Componentes
 			Dim Executou As Boolean = False
 
 			Try
+				Dim B As New DAL.Modelos.PessoasEnderecos
 
-				RPessoasEnderecos.AdicionarParametro(DAL.Modelos.PessoasEnderecos.Campos.ID.ToString, CompareType.Igual, Dados.ID)
+				Popular(Dados, B)
+
+				RPessoasEnderecos.AdicionarParametro(DAL.Modelos.PessoasEnderecos.Campos.ID.ToString, CompareType.Igual, B.ID)
 				RPessoasEnderecos.Excluir()
 
 				Executou = True

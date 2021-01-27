@@ -13,7 +13,8 @@ Public Class MvcApplication
 	Sub Application_AcquireRequestState(sender As Object, e As EventArgs)
 		If Not sender.context.Session Is Nothing Then
 			Dim Usuario As FilantropiaDLL.Componentes.Pessoa = Session("Usuario")
-			Dim Pagina As String = Context.Request.Url.Segments(Context.Request.Url.Segments.Count - 1)
+			Dim Cont As Int16 = 1
+			Dim Pagina As String = Context.Request.Url.Segments(Context.Request.Url.Segments.Count - Cont)
 			Dim EnderecoFalha As String = ""
 
 			If Request.UrlReferrer Is Nothing Then
@@ -23,7 +24,10 @@ Public Class MvcApplication
 			End If
 
 			If Pagina.ToUpper <> "SAIR" Then
-				If IsNumeric(Pagina) Then Pagina = Context.Request.Url.Segments(Context.Request.Url.Segments.Count - 2)
+				While IsNumeric(Pagina)
+					Cont += 1
+					Pagina = Context.Request.Url.Segments(Context.Request.Url.Segments.Count - Cont)
+				End While
 				'Pagina = IIf(Pagina.Length > 2, Pagina.Replace("/", ""), Pagina)
 				Pagina = Pagina.Replace("/", "")
 
