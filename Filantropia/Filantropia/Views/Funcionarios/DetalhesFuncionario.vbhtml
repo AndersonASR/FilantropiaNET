@@ -79,6 +79,9 @@ End Code
                 <th>
                     Telefone
                 </th>
+                <th>
+                    Padrao
+                </th>
                 <th>@Html.ActionLink("Incluir Novo Telefone", "NovoTelefone", "Telefones", New With {.IDPessoa = Model.IDPessoa})</th>
             </tr>
 
@@ -89,6 +92,9 @@ End Code
                     </td>
                     <td>
                         @Html.DisplayFor(Function(modelItem) item.Telefone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(Function(modelItem) item.Padrao)
                     </td>
                     <td>
                         @Html.ActionLink("Alterar", "AlterarTelefone", "Telefones", New With {.id = item.IDPessoa, .idtelefone = item.ID}) |
@@ -131,6 +137,9 @@ End If
                 <th>
                     Observações
                 </th>
+                <th>
+                    Padrão
+                </th>
                 <th>@Html.ActionLink("Incluir Novo Endereço", "NovoEndereco", "Enderecos", New With {.id = Model.IDPessoa})</th>
             </tr>
 
@@ -159,6 +168,9 @@ End If
                     </td>
                     <td>
                         @Html.DisplayFor(Function(modelItem) item.OBS)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(Function(modelItem) item.Padrao)
                     </td>
                     <td>
                         @Html.ActionLink("Alterar", "AlterarEndereco", "Enderecos", New With {.id = item.ID}) |

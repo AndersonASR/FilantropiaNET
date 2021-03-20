@@ -20,7 +20,7 @@ Namespace DAL.Modelos
 		Public Property IDPessoa As Int64
 		Public Property DataInativacao As Date
 		Public Property DiaContribuicao As Int16
-		Public Property ValorContrinuicao As Single
+		Public Property ValorContribuicao As Single
 		<Required>
 		Public Property IDPeriodicidade As Int64
 		<Required>

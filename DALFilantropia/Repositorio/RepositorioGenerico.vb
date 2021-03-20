@@ -23,7 +23,8 @@ Namespace DAL.Repositorio
 				formatoDH = "MM/dd/yyyy HH:mm:ss"
 				PlicDH = "#"
 			ElseIf TipoBD = enumBD.SQLSERVER Then
-				PlicDH = ""
+				formatoDH = "dd/MM/yyyy HH:mm:ss"
+				PlicDH = "'"
 			ElseIf TipoBD <> enumBD.SQLITE And TipoBD <> enumBD.ORACLE Then
 				plicLike = "*"
 			End If

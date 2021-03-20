@@ -60,6 +60,13 @@ End Code
             @Html.DisplayFor(Function(model) model.WhatsApp)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(Function(model) model.MotivoDesativacao)
+        </dt>
+
+        <dd>
+            @Html.EditorFor(Function(model) model.MotivoDesativacao, New With {.htmlAttributes = New With {.class = "form-control"}})
+        </dd>
     </dl>
     @Using (Html.BeginForm())
         @Html.AntiForgeryToken()

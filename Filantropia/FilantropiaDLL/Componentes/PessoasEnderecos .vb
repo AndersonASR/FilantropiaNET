@@ -1,6 +1,7 @@
 ﻿Imports DALFilantropia
 Imports DALFilantropia.DAL
 Imports DALFilantropia.DAL.Modelos
+Imports System.ComponentModel.DataAnnotations
 
 Namespace Componentes
 
@@ -10,7 +11,13 @@ Namespace Componentes
 		Public Property IDEndereco As Long
 		Public Property IDTipoEndereco As Long
 		Public Property IDResponsavelCadastro As Long
+		<Display(Name:="Data de Registro")>
 		Public Property DataRegistro As DateTime
+		<Display(Name:="Data da Desativação")>
+		Public Property DataDesativacao As DateTime
+		Public Property Padrao As Boolean
+		<Display(Name:="Motivo da Desativação")>
+		Public Property MotivoDesativacao As String
 	End Class
 
 	Public Class PessoasEnderecos
@@ -173,7 +180,13 @@ Namespace Componentes
 				Popular(Dados, B)
 
 				RPessoasEnderecos.AdicionarParametro(DAL.Modelos.PessoasEnderecos.Campos.ID.ToString, CompareType.Igual, B.ID)
-				RPessoasEnderecos.Excluir()
+				LPessoasEnderecos = RPessoasEnderecos.Obter
+				B = LPessoasEnderecos(0)
+
+				B.DataDesativacao = Now
+				B.MotivoDesativacao = Dados.MotivoDesativacao
+
+				RPessoasEnderecos.Atualizar(B)
 
 				Executou = True
 			Catch ex As Exception

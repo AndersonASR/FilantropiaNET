@@ -18,9 +18,12 @@ Namespace Componentes
 			End Get
 			Set(Tel As String)
 				If Not Tel Is Nothing Then
-					If Tel.Trim.Length >= 7 Then
+					If Tel.Trim.Length >= 7 And Tel.Contains("-") Then
 						Prefixo = Tel.Substring(0, Tel.IndexOf("-") - 1)
 						Sulfixo = Tel.Substring(Tel.IndexOf("-") + 1)
+					ElseIf isnumeric(Tel) And (Tel.Length = 8 Or tel.Length = 7) Then
+						Prefixo = Tel.Substring(0, IIf(Tel.Length = 7, 3, 4))
+						Sulfixo = Tel.Substring(IIf(Tel.Length = 7, 3, 4))
 					End If
 				End If
 			End Set
@@ -30,6 +33,9 @@ Namespace Componentes
 		Public Property WhatsApp As Boolean
 		Public Property DataRegistro As DateTime
 		Public Property IDResponsavelCadastro As Int64
+		Public Property DataDesativacao As Date
+		Public Property MotivoDesativacao As String
+		Public Property Padrao As Boolean
 	End Class
 
 	Public Class Telefones
@@ -144,18 +150,20 @@ Namespace Componentes
 					Dados.ID = Teste.ID
 				End If
 
-				Dim _PT As New PessoaTelefone
-				_PT = PT.Obter(Dados.IDPessoa, Dados.ID)
-				If _PT Is Nothing Then
-					_PT = New PessoaTelefone
-					_PT.DataRegistro = Now
-					_PT.SMS = Dados.SMS
-					_PT.WhatsApp = Dados.WhatsApp
-					_PT.IDTelefone = Dados.ID
-					_PT.IDPessoa = Dados.IDPessoa
-					_PT.IDResponsavelCadastro = Dados.IDResponsavelCadastro
-					_PT.IDTipoTelefone = Dados.TipoReferencia.ID
-					PT.InserirNovo(_PT)
+				If Dados.IDPessoa > 0 Then
+					Dim _PT As New PessoaTelefone
+					_PT = PT.Obter(Dados.IDPessoa, Dados.ID)
+					If _PT Is Nothing Then
+						_PT = New PessoaTelefone
+						_PT.DataRegistro = Now
+						_PT.SMS = Dados.SMS
+						_PT.WhatsApp = Dados.WhatsApp
+						_PT.IDTelefone = Dados.ID
+						_PT.IDPessoa = Dados.IDPessoa
+						_PT.IDResponsavelCadastro = Dados.IDResponsavelCadastro
+						_PT.IDTipoTelefone = Dados.TipoReferencia.ID
+						PT.InserirNovo(_PT)
+					End If
 				End If
 
 				Executou = True
@@ -175,17 +183,38 @@ Namespace Componentes
 
 				Popular(Dados, B)
 
-				RTelefones.Atualizar(B)
+				RTelefones.LimparParametros()
+				RTelefones.AdicionarParametro(DAL.Modelos.Telefones.Campos.DDD.ToString, CompareType.Igual, Dados.DDD)
+				RTelefones.AdicionarParametro(DAL.Modelos.Telefones.Campos.Prefixo.ToString, CompareType.Igual, Dados.Prefixo)
+				RTelefones.AdicionarParametro(DAL.Modelos.Telefones.Campos.Sulfixo.ToString, CompareType.Igual, Dados.Sulfixo)
+				LTelefones = RTelefones.Obter
 
-				Dim _PT As New PessoaTelefone
+				If LTelefones.Count > 0 Then
+					B.ID = LTelefones(0).ID
+				Else
+					RTelefones.Inserir(B)
+					RTelefones.LimparParametros()
+					RTelefones.AdicionarParametro(DAL.Modelos.Telefones.Campos.DDD.ToString, CompareType.Igual, Dados.DDD)
+					RTelefones.AdicionarParametro(DAL.Modelos.Telefones.Campos.Prefixo.ToString, CompareType.Igual, Dados.Prefixo)
+					RTelefones.AdicionarParametro(DAL.Modelos.Telefones.Campos.Sulfixo.ToString, CompareType.Igual, Dados.Sulfixo)
+					LTelefones = RTelefones.Obter
+					B = LTelefones(0)
+				End If
 
-				Popular(Dados, _PT)
+				If (Dados.IDPessoa > 0) Then
+					Dim _PT As PessoaTelefone = PT.Obter(Dados.IDPessoa, B.ID)
 
-				_PT.IDTipoTelefone = Dados.TipoReferencia.ID
+					If _PT Is Nothing Then
 
-				PT.Atualizar(_PT)
+						Popular(Dados, _PT)
 
+						_PT.IDTipoTelefone = Dados.TipoReferencia.ID
+
+						PT.InserirNovo(_PT)
+					End If
+				End If
 				Executou = True
+
 			Catch ex As Exception
 
 			End Try
@@ -201,8 +230,13 @@ Namespace Componentes
 				'TODO: Énecessário excluir o relacionamento PessoasTelefones e só então verificar se devemos excluir o telefone
 				Popular(Dados, B)
 
-				RTelefones.AdicionarParametro(DAL.Modelos.Telefones.Campos.ID.ToString, CompareType.Igual, B.ID)
-				RTelefones.Excluir()
+				If Dados.IDPessoa > 0 Then
+					Dim _PT As PessoaTelefone = PT.Obter(Dados.IDPessoa, Dados.ID)
+					_PT.DataDesativacao = Now
+					_PT.MotivoDesativacao = Dados.MotivoDesativacao
+
+					PT.Atualizar(_PT)
+				End If
 
 				Executou = True
 			Catch ex As Exception

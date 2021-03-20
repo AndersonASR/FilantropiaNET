@@ -1,6 +1,7 @@
 ﻿Imports DALFilantropia
 Imports DALFilantropia.DAL
 Imports DALFilantropia.DAL.Modelos
+Imports System.ComponentModel.DataAnnotations
 
 Namespace Componentes
 
@@ -8,11 +9,13 @@ Namespace Componentes
 		Public Property ID As Int64
 		Public Property Colaborador As Colaborador
 		Public Property Telefone As Telefone
+		<Display(Name:="Data/Hora da Chamada")>
 		Public Property DataHora As DateTime
 		Public Property Atendeu As Boolean
 		Public Property Funcionario As Funcionario
 		Public Property Instituto As Instituto
 		Public Property Campanha As Campanha
+		<Display(Name:="Número de Tentativas")>
 		Public Property NumeroTentativas As Int16
 	End Class
 
@@ -42,6 +45,32 @@ Namespace Componentes
 
 			RHistoricosChamadas.LimparParametros()
 			LHistoricosChamadas = RHistoricosChamadas.ObterTodos
+
+			If LHistoricosChamadas.Count > 0 Then
+
+				TP = New List(Of HistoricoChamada)
+
+				For X As Int16 = 0 To LHistoricosChamadas.Count - 1
+					Dim T As New HistoricoChamada
+
+					Popular(LHistoricosChamadas(X), T)
+					'T.ID = LHistoricosChamadas(X).ID
+					'T.HistoricoChamada = LHistoricosChamadas(X).HistoricoChamada
+					'T.Alias = LHistoricosChamadas(X).Alias
+					TP.Add(T)
+				Next
+			End If
+
+			Return TP
+
+		End Function
+
+		Public Function ObterTodos(Inicio As Date) As List(Of HistoricoChamada)
+			Dim TP As List(Of HistoricoChamada) = Nothing
+
+			RHistoricosChamadas.LimparParametros()
+			RHistoricosChamadas.AdicionarParametro(DAL.Modelos.HistoricoChamadas.Campos.DataHora.ToString, CompareType.MaiorOuIgualA, Inicio)
+			LHistoricosChamadas = RHistoricosChamadas.Obter
 
 			If LHistoricosChamadas.Count > 0 Then
 

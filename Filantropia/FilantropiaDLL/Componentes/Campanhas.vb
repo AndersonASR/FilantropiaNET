@@ -1,6 +1,7 @@
 ﻿Imports DALFilantropia
 Imports DALFilantropia.DAL
 Imports DALFilantropia.DAL.Modelos
+Imports System.ComponentModel.DataAnnotations
 
 Namespace Componentes
 
@@ -8,6 +9,7 @@ Namespace Componentes
 		Public Property ID As Long
 		Public Property Instituto As Instituto
 		Public Property Campanha As String
+		<Display(Name:="Descrição")>
 		Public Property Descricao As String
 		Public Property Inicio As DateTime
 		Public Property Fim As DateTime

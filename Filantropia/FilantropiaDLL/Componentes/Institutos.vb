@@ -6,7 +6,7 @@ Namespace Componentes
 
 	Partial Public Class Instituto
 		Public Property ID As Long
-		Public Property Nome As Long
+		Public Property Nome As String
 		Public Property CNPJ As Long
 	End Class
 

@@ -15,7 +15,7 @@ Option Explicit On
 Namespace My
     
     <Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.7.0.0"),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0"),  _
      Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
     Partial Friend NotInheritable Class MySettings
         Inherits Global.System.Configuration.ApplicationSettingsBase
@@ -57,8 +57,8 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=den1.mssql8.gear.host;Initial Catalog=Filantropia;Persist Security In"& _ 
-            "fo=True;User ID=filantropia;Password=Mg3C!1pis_74")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=den1.mssql7.gear.host;Initial Catalog=Filantropia;Persist Security In"& _ 
+            "fo=True;User ID=filantropia;Password=Yx6XH3!s6?09")>  _
         Public ReadOnly Property BD() As String
             Get
                 Return CType(Me("BD"),String)
@@ -68,8 +68,8 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-UP9I9HO\SQLEXPRESS;Initial Catalog=Filantropia;Integrated Sec"& _ 
-            "urity=True")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=LAZER\SQLEXPRESS;Initial Catalog=Filantropia;Integrated Security=True"& _ 
+            "")>  _
         Public ReadOnly Property BDLocal() As String
             Get
                 Return CType(Me("BDLocal"),String)

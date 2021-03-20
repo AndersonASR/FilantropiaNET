@@ -1,6 +1,7 @@
 ﻿Imports DALFilantropia
 Imports DALFilantropia.DAL
 Imports DALFilantropia.DAL.Modelos
+Imports System.ComponentModel.DataAnnotations
 
 Namespace Componentes
 
@@ -13,7 +14,13 @@ Namespace Componentes
 		Public Property IDResponsavelCadastro As Long
 		Public Property SMS As Boolean
 		Public Property WhatsApp As Boolean
+		Public Property Padrao As Boolean
+		<Display(Name:="Data de Registro")>
 		Public Property DataRegistro As DateTime
+		<Display(Name:="Data da Desativação")>
+		Public Property DataDesativacao As DateTime
+		<Display(Name:="Motivo da Desativação")>
+		Public Property MotivoDesativacao As String
 	End Class
 
 	Public Class PessoasTelefones
@@ -100,7 +107,7 @@ Namespace Componentes
 			Dim R As PessoaTelefone = Nothing
 
 			RPessoasTelefones.LimparParametros()
-			RPessoasTelefones.AdicionarParametro(DAL.Modelos.PessoasTelefones.Campos.IDPessoa.ToString, CompareType.Igual, IDPessoa)
+			If IDPessoa > 0 Then RPessoasTelefones.AdicionarParametro(DAL.Modelos.PessoasTelefones.Campos.IDPessoa.ToString, CompareType.Igual, IDPessoa)
 			RPessoasTelefones.AdicionarParametro(DAL.Modelos.PessoasTelefones.Campos.IDTelefone.ToString, CompareType.Igual, IDTelefone)
 			LPessoasTelefones = RPessoasTelefones.Obter
 
@@ -176,7 +183,11 @@ Namespace Componentes
 				Popular(Dados, B)
 
 				RPessoasTelefones.AdicionarParametro(DAL.Modelos.PessoasTelefones.Campos.ID.ToString, CompareType.Igual, B.ID)
-				RPessoasTelefones.Excluir()
+				LPessoasTelefones = RPessoasTelefones.Obter
+				B = LPessoasTelefones(0)
+				B.DataDesativacao = Now
+				B.MotivoDesativacao = Dados.MotivoDesativacao
+				RPessoasTelefones.Atualizar(B)
 
 				Executou = True
 			Catch ex As Exception

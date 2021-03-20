@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="Filantropia.My.MySettings.BD-Web.config Connection String" description="Filantropia.My.MySettings.BD A Cadeia de Conexão usada em web.config pelo aplicativo para acessar o banco de dados." defaultValue="Data Source=den1.mssql8.gear.host;Initial Catalog=Filantropia;Persist Security Info=True;User ID=filantropia;Password=Mg3C!1pis_74" tags="SqlConnectionString">
+  <parameter name="Filantropia.My.MySettings.BD-Web.config Connection String" description="Filantropia.My.MySettings.BD A Cadeia de Conexão usada em web.config pelo aplicativo para acessar o banco de dados." defaultValue="Data Source=den1.mssql7.gear.host;Initial Catalog=Filantropia;Persist Security Info=True;User ID=filantropia;Password=Yx6XH3!s6?09" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="D:\\Desenvolvimento\\Filantropia\\Filantropia\\Filantropia\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Filantropia.My.MySettings.BD']/@connectionString" />
   </parameter>
-  <parameter name="Filantropia.My.MySettings.BDLocal-Web.config Connection String" description="Filantropia.My.MySettings.BDLocal A Cadeia de Conexão usada em web.config pelo aplicativo para acessar o banco de dados." defaultValue="Data Source=DESKTOP-UP9I9HO\SQLEXPRESS;Initial Catalog=Filantropia;Integrated Security=True" tags="SqlConnectionString">
+  <parameter name="Filantropia.My.MySettings.BDLocal-Web.config Connection String" description="Filantropia.My.MySettings.BDLocal A Cadeia de Conexão usada em web.config pelo aplicativo para acessar o banco de dados." defaultValue="Data Source=LAZER\SQLEXPRESS;Initial Catalog=Filantropia;Integrated Security=True" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="D:\\Desenvolvimento\\Filantropia\\Filantropia\\Filantropia\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Filantropia.My.MySettings.BDLocal']/@connectionString" />
   </parameter>
 </parameters>

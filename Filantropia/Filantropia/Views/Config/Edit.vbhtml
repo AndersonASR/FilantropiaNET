@@ -36,7 +36,7 @@ End Code
                                 Next
                             End If
                         End Code
-                        @<input type="checkbox" name="@Model.Paginas(X).ID" id="@Model.Paginas(X).ID" checked="@Marcar" /> @Model.Paginas(X).Descricao  @<BR />
+                        @<input type="checkbox" name="@Model.Paginas(X).ID" id="@Model.Paginas(X).ID" @IIf(Marcar, "checked", "") /> @Model.Paginas(X).Descricao  @<BR />
                             Next
                 </div>
             </div>

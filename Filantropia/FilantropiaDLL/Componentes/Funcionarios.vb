@@ -140,8 +140,19 @@ Namespace Componentes
 			Dim Executou As Boolean = False
 
 			Try
+				Dim P As New Pessoa
+				P = Pessoas.Obter(Dados.CPFCNPJ)
+				If P Is Nothing Then
+					P = New Pessoa
+					Popular(Dados, P)
+					P.TipoPessoa = Tipos.Obter("COLABORADOR")
+					Pessoas.InserirNovo(P)
+					P = Pessoas.Obter(Dados.CPFCNPJ)
+				End If
+
 				Dim B As New DAL.Modelos.Funcionarios
 
+				B.IDPessoa = P.ID
 				Popular(Dados, B)
 
 				RFuncionarios.Inserir(B)

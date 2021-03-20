@@ -83,5 +83,9 @@ Namespace Controllers
                 Return View()
             End Try
         End Function
+
+        Public Function ObterTelefones(termo As String) As ActionResult
+            Return Json(Filantropia.Telefones.ObterTodos().Where(Function(c) c.Telefone.StartsWith(termo)).Select(Function(a) New With {.label = a.Telefone, .id = a.ID}), JsonRequestBehavior.AllowGet)
+        End Function
     End Class
 End Namespace

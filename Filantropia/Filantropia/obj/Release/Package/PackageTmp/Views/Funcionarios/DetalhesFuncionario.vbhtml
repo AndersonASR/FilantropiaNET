@@ -69,100 +69,120 @@ End Code
     </dl>
 </div>
 
-<p>
-    <table class="table">
-        <tr>
-            <th>
-                DDD
-            </th>
-            <th>
-                Telefone
-            </th>
-            <th>@Html.ActionLink("Incluir Novo Telefone", "NovoTelefone", "Telefones", New With {.id = Model.IDPessoa})</th>
-        </tr>
-
-        @For Each item In Model.Telefones
-            @<tr>
-                <td>
-                    @Html.DisplayFor(Function(modelItem) item.DDD)
-                </td>
-                <td>
-                    @Html.DisplayFor(Function(modelItem) item.Telefone)
-                </td>
-                <td>
-                    @Html.ActionLink("Alterar", "AlterarTelefone", "Telefones", New With {.id = item.ID}) |
-                    @Html.ActionLink("Excluir", "ExcluirTelefone", "Telefones", New With {.id = item.ID})
-                </td>
+@If Not Model.Telefones Is Nothing Then
+    @<p>
+        <Table Class="table">
+            <tr>
+                <th>
+                    DDD
+                </th>
+                <th>
+                    Telefone
+                </th>
+                <th>
+                    Padrao
+                </th>
+                <th>@Html.ActionLink("Incluir Novo Telefone", "NovoTelefone", "Telefones", New With {.IDPessoa = Model.IDPessoa})</th>
             </tr>
-        Next
 
-    </table>
-</p>
+            @For Each item In Model.Telefones
+                @<tr>
+                    <td>
+                        @Html.DisplayFor(Function(modelItem) item.DDD)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(Function(modelItem) item.Telefone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(Function(modelItem) item.Padrao)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Alterar", "AlterarTelefone", "Telefones", New With {.id = item.IDPessoa, .idtelefone = item.ID}) |
+                        @Html.ActionLink("Excluir", "ExcluirTelefone", "Telefones", New With {.id = item.IDPessoa, .idtelefone = item.ID})
+                    </td>
+                </tr>
+            Next
 
-<p>
-    <table class="table">
-        <tr>
-            <th>
-                Logradouro
-            </th>
-            <th>
-                Número
-            </th>
-            <th>
-                Complemento
-            </th>
-            <th>
-                Bairro
-            </th>
-            <th>
-                Cidade
-            </th>
-            <th>
-                Estado
-            </th>
-            <th>
-                CEP
-            </th>
-            <th>
-                Observações
-            </th>
-            <th>@Html.ActionLink("Incluir Novo Endereço", "NovoEndereco", "Enderecos", New With {.id = Model.IDPessoa})</th>
-        </tr>
-        
-        @For Each item In Model.Enderecos
-            @<tr>
-                <td>
-                    @Html.DisplayFor(Function(modelItem) item.Logradouro)
-                </td>
-                <td>
-                    @Html.DisplayFor(Function(modelItem) item.Numero)
-                </td>
-                <td>
-                    @Html.DisplayFor(Function(modelItem) item.Complemento)
-                </td>
-                <td>
-                    @Html.DisplayFor(Function(modelItem) item.Bairro)
-                </td>
-                <td>
-                    @Html.DisplayFor(Function(modelItem) item.Cidade)
-                </td>
-                <td>
-                    @Html.DisplayFor(Function(modelItem) item.UF)
-                </td>
-                <td>
-                    @Html.DisplayFor(Function(modelItem) item.CEP)
-                </td>
-                <td>
-                    @Html.DisplayFor(Function(modelItem) item.OBS)
-                </td>
-                <td>
-                    @Html.ActionLink("Alterar", "AlterarEndereco", "Enderecos", New With {.id = item.ID}) |
-                    @Html.ActionLink("Excluir", "ExcluirEndereco", "Enderecos", New With {.id = item.ID})
-                </td>
+        </Table>
+    </p>
+Else
+    @Html.ActionLink("Incluir Telefone", "NovoTelefone", "Telefones", New With {.id = Model.IDPessoa}, Nothing)
+End If
+
+@If Not Model.Enderecos Is Nothing Then
+    @<p>
+        <Table Class="table">
+            <tr>
+                <th>
+                    Logradouro
+                </th>
+                <th>
+                    Número
+                </th>
+                <th>
+                    Complemento
+                </th>
+                <th>
+                    Bairro
+                </th>
+                <th>
+                    Cidade
+                </th>
+                <th>
+                    Estado
+                </th>
+                <th>
+                    CEP
+                </th>
+                <th>
+                    Observações
+                </th>
+                <th>
+                    Padrão
+                </th>
+                <th>@Html.ActionLink("Incluir Novo Endereço", "NovoEndereco", "Enderecos", New With {.id = Model.IDPessoa})</th>
             </tr>
-        Next
-    </table>
-</p>
+
+            @For Each item In Model.Enderecos
+                @<tr>
+                    <td>
+                        @Html.DisplayFor(Function(modelItem) item.Logradouro)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(Function(modelItem) item.Numero)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(Function(modelItem) item.Complemento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(Function(modelItem) item.Bairro)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(Function(modelItem) item.Cidade)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(Function(modelItem) item.UF)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(Function(modelItem) item.CEP)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(Function(modelItem) item.OBS)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(Function(modelItem) item.Padrao)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Alterar", "AlterarEndereco", "Enderecos", New With {.id = item.ID}) |
+                        @Html.ActionLink("Excluir", "ExcluirEndereco", "Enderecos", New With {.id = item.ID})
+                    </td>
+                </tr>
+            Next
+        </Table>
+    </p>
+Else
+    @Html.ActionLink("Incluir Endereço", "NovoEndereco", "Enderecos", New With {.id = Model.IDPessoa}, Nothing)
+End If
 
 <p>
     @Html.ActionLink("Alterar", "AlterarFuncionario", New With {.id = Model.ID}) |

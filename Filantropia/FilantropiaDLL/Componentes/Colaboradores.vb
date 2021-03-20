@@ -95,6 +95,8 @@ Namespace Componentes
 
 				Popular(Dados, B)
 
+				B.DataCadastro = Now
+
 				RColaboradores.Inserir(B)
 
 				Executou = True

@@ -1,11 +1,13 @@
 ﻿Imports DALFilantropia
 Imports DALFilantropia.DAL
 Imports DALFilantropia.DAL.Enumeradores
+Imports System.ComponentModel.DataAnnotations
 
 Namespace Componentes
 
 	Partial Public Class EstadoCivil
 		Public Property ID As Long
+		<Display(Name:="Estado Civil")>
 		Public Property EstadoCivil As String
 	End Class
 

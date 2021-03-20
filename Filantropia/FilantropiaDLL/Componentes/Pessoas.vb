@@ -1,17 +1,23 @@
 ﻿Imports DALFilantropia
 Imports DALFilantropia.DAL
 Imports DALFilantropia.DAL.Modelos
+Imports System.ComponentModel.DataAnnotations
 
 Namespace Componentes
 
 	Partial Public Class Pessoa
 		Public Property ID As Long
 		Public Property TipoPessoa As Componentes.TipoPessoa
+		<Display(Name:="Estado Civil")>
 		Public Property EstadoCivil As String
+		<Display(Name:="Motivo da Restrição")>
 		Public Property MotivoRestricao As String
+		<Display(Name:="Responsável pelo Cadastro")>
 		Public Property ResponsavelCadastro As Funcionario
+		<Display(Name:="CPF ou CNPJ")>
 		Public Property CPFCNPJ As String
 		Public Property Nome As String
+		<Display(Name:="Data de Registro da Restrição")>
 		Public Property DataRestricao As DateTime
 		Public Property Enderecos As List(Of Componentes.Endereco)
 		Public Property Telefones As List(Of Componentes.Telefone)

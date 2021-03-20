@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Componentes\Agendamentos.vb" />
     <Compile Include="Componentes\PessoasEnderecos .vb" />
+    <Compile Include="Componentes\TesteFuncionarios.vb" />
     <Compile Include="Componentes\TiposReferencias.vb" />
     <Compile Include="Componentes\TiposPessoasPaginas.vb" />
     <Compile Include="Componentes\Configs.vb" />

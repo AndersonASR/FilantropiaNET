@@ -1,12 +1,14 @@
 ﻿Imports DALFilantropia
 Imports DALFilantropia.DAL
 Imports DALFilantropia.DAL.Modelos
+Imports System.ComponentModel.DataAnnotations
 
 Namespace Componentes
 
 	Partial Public Class Pagina
 		Public Property ID As Long
 		Public Property Pagina As String
+		<Display(Name:="Descrição")>
 		Public Property Descricao As String
 		Public Property Publica As Boolean
 	End Class

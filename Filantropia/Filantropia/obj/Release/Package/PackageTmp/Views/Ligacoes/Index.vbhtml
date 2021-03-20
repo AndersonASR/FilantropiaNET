@@ -4,10 +4,10 @@
     Layout = "~/Views/Shared/_Layout_Principal .vbhtml"
 End Code
 
-<h2>Liga;óes</h2>
+<h2>Ligações</h2>
 
 <p>
-    @Html.ActionLink("Nova Liga;áo", "NovaLigacao")
+    @Html.ActionLink("Nova Ligação", "NovaLigacao")
 </p>
 
 @If Not Model Is Nothing Then

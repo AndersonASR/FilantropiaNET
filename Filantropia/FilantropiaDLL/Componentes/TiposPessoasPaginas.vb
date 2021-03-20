@@ -107,7 +107,7 @@ Namespace Componentes
 			Return Executou
 		End Function
 
-		Public Function Atualizar(IDTipo As Int64, IDPagina As Int64, Permissao As Boolean) As Boolean
+		Public Function Atualizar(IDTipo As Int64, IDPagina As Int64, Permissao As Boolean, Optional CadastrarNovo As Boolean = False) As Boolean
 			Dim Executou As Boolean = False
 
 			Try
@@ -124,13 +124,23 @@ Namespace Componentes
 					RTiposPessoasPaginas.Atualizar(B)
 
 					Executou = True
+				ElseIf CadastrarNovo Then
+					Dim B As New DAL.Modelos.TiposPessoasPaginas
+					B.IDPagina = IDPagina
+					B.IDTipoPessoa = IDTipo
+					B.Permissao = Permissao
+
+					RTiposPessoasPaginas.Inserir(B)
+
+					Executou = True
 				End If
 
 			Catch ex As Exception
-
+				Stop
 			End Try
 
 			Return Executou
+
 		End Function
 
 		Public Function Excluir(Dados As TipoPessoaPagina) As Boolean

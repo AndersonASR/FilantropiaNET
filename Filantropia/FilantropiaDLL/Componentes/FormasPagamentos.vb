@@ -1,11 +1,13 @@
 ﻿Imports DALFilantropia
 Imports DALFilantropia.DAL
 Imports DALFilantropia.DAL.Modelos
+Imports System.ComponentModel.DataAnnotations
 
 Namespace Componentes
 
 	Partial Public Class FormaPagamento
 		Public Property ID As Long
+		<Display(Name:="Forma de Pagamento")>
 		Public Property FormaPagamento As String
 	End Class
 

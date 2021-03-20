@@ -11,7 +11,10 @@ Namespace DAL.Modelos
 			IDResponsavelCadastro
 			SMS
 			WhatsApp
+			Padrao
 			DataRegistro
+			DataDesativacao
+			MotivoDesativacao
 		End Enum
 
 		<Required>
@@ -26,8 +29,11 @@ Namespace DAL.Modelos
 		Public Property IDContato As Long
 		<Required>
 		Public Property IDResponsavelCadastro As Long
+		Public Property Padrao As Long
 		Public Property SMS As Boolean
 		Public Property WhatsApp As Boolean
 		Public Property DataRegistro As DateTime
+		Public Property DataDesativacao As DateTime
+		Public Property MotivoDesativacao As String
 	End Class
 End Namespace

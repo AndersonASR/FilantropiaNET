@@ -26,11 +26,11 @@ Namespace Controllers
         Function NovoFuncionario(Dados As FilantropiaDLL.Componentes.Funcionario) As ActionResult
             Try
 
-                Dados.IDResponsavelCadastro = CType(Session("Usuario"), FilantropiaDLL.Componentes.Funcionario).ID
+                Dados.IDResponsavelCadastro = CType(Session("Usuario"), FilantropiaDLL.Componentes.Pessoa).ID
                 Filantropia.Funcionarios.InserirNovo(Dados)
 
                 Return RedirectToAction("Index")
-            Catch
+            Catch EX As Exception
                 Return View()
             End Try
         End Function

@@ -9,6 +9,9 @@ Namespace DAL.Modelos
 			IDTipoEndereco
 			IDResponsavelCadastro
 			DataRegistro
+			Padrao
+			DataDesativacao
+			MotivoDesativacao
 		End Enum
 
 		<Required>
@@ -23,5 +26,8 @@ Namespace DAL.Modelos
 		Public Property IDResponsavelCadastro As Long
 		<Required>
 		Public Property DataRegistro As DateTime
+		Public Property Padrao As Boolean
+		Public Property DataDesativacao As DateTime
+		Public Property MotivoDesativacao As String
 	End Class
 End Namespace

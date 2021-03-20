@@ -11,7 +11,7 @@ Namespace DAL.Modelos
 		<Required>
 		Public Property ID As Long
 		<Required>
-		Public Property Nome As Long
+		Public Property Nome As String
 		Public Property CNPJ As Long
 	End Class
 End Namespace

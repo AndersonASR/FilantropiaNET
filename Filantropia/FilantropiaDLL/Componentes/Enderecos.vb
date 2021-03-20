@@ -1,6 +1,7 @@
 ﻿Imports DALFilantropia
 Imports DALFilantropia.DAL
 Imports DALFilantropia.DAL.Modelos
+Imports System.ComponentModel.DataAnnotations
 
 Namespace Componentes
 
@@ -15,9 +16,16 @@ Namespace Componentes
 		Public Property UF As String
 		Public Property CEP As String
 		Public Property OBS As String
+		Public Property Padrao As Boolean
 		Public Property IDResponsavelCadastro As Int64
+		<Display(Name:="Tipo de Endereço")>
 		Public Property TipoEndereco As TipoReferencia
+		<Display(Name:="Data de Registro")>
 		Public Property DataRegistro As DateTime
+		<Display(Name:="Data de Desativação")>
+		Public Property DataDesativacao As DateTime
+		<Display(Name:="Motivo da Desativação")>
+		Public Property MotivoDesativacao As String
 	End Class
 
 	Public Class Enderecos
@@ -137,18 +145,19 @@ Namespace Componentes
 					Dados.ID = Teste.ID
 				End If
 
-				Dim _PT As New PessoaEndereco
-				_PT = PT.Obter(Dados.IDPessoa, Dados.ID)
-				If _PT Is Nothing Then
-					_PT = New PessoaEndereco
-					_PT.DataRegistro = Now
-					_PT.IDEndereco = Dados.ID
-					_PT.IDPEssoa = Dados.IDPessoa
-					_PT.IDResponsavelCadastro = Dados.IDResponsavelCadastro
-					_PT.IDTipoEndereco = Dados.TipoEndereco.ID
-					PT.InserirNovo(_PT)
+				If Dados.IDPessoa > 0 Then
+					Dim _PT As New PessoaEndereco
+					_PT = PT.Obter(Dados.IDPessoa, Dados.ID)
+					If _PT Is Nothing Then
+						_PT = New PessoaEndereco
+						_PT.DataRegistro = Now
+						_PT.IDEndereco = Dados.ID
+						_PT.IDPEssoa = Dados.IDPessoa
+						_PT.IDResponsavelCadastro = Dados.IDResponsavelCadastro
+						_PT.IDTipoEndereco = Dados.TipoEndereco.ID
+						PT.InserirNovo(_PT)
+					End If
 				End If
-
 				Executou = True
 
 			Catch ex As Exception
@@ -166,22 +175,34 @@ Namespace Componentes
 
 				Popular(Dados, B)
 
-				REnderecos.Atualizar(B)
+				Dim Ender As Endereco = Obter(Dados.Logradouro, Dados.Numero, Dados.Complemento, Dados.Bairro, Dados.Cidade, Dados.UF, Dados.CEP, Dados.OBS)
 
-				Dim _PT As New PessoaEndereco
+				If Not Ender Is Nothing Then
+					B.ID = Ender.ID
+				Else
+					Ender = Obter(Dados.Logradouro, Dados.Numero, Dados.Complemento, Dados.Bairro, Dados.Cidade, Dados.UF, Dados.CEP, Dados.OBS)
+					Popular(Ender, B)
+				End If
 
-				Popular(Dados, _PT)
+				Dim _PT As PessoaEndereco = PT.Obter(Dados.IDPessoa, B.ID)
 
-				_PT.IDTipoEndereco = Dados.TipoEndereco.ID
+				If _PT Is Nothing Then
 
-				PT.Atualizar(_PT)
+					Popular(Dados, _PT)
+
+					_PT.IDTipoEndereco = Dados.TipoEndereco.ID
+
+					PT.InserirNovo(_PT)
+				End If
 
 				Executou = True
+
 			Catch ex As Exception
 
 			End Try
 
 			Return Executou
+
 		End Function
 
 		Public Function Excluir(Dados As Endereco) As Boolean
@@ -192,8 +213,13 @@ Namespace Componentes
 				'TODO: Énecessário excluir o relacionamento PessoasEnderecos e só então verificar se devemos excluir o Endereco
 				Popular(Dados, B)
 
-				REnderecos.AdicionarParametro(DAL.Modelos.Enderecos.Campos.ID.ToString, CompareType.Igual, B.ID)
-				REnderecos.Excluir()
+				If Dados.IDPessoa > 0 Then
+					Dim _PT As PessoaEndereco = PT.Obter(Dados.IDPessoa, Dados.ID)
+					_PT.DataDesativacao = Now
+					_PT.MotivoDesativacao = Dados.MotivoDesativacao
+
+					PT.Atualizar(_PT)
+				End If
 
 				Executou = True
 			Catch ex As Exception

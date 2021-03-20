@@ -12,14 +12,6 @@ End Code
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(Function(model) model.IDPessoa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.IDPessoa)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(Function(model) model.Logradouro)
         </dt>
 
@@ -84,19 +76,11 @@ End Code
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(Function(model) model.IDResponsavelCadastro)
+            @Html.DisplayNameFor(Function(model) model.motivodesativacao)
         </dt>
 
         <dd>
-            @Html.DisplayFor(Function(model) model.IDResponsavelCadastro)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.DataRegistro)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.DataRegistro)
+            @Html.EditorFor(Function(model) model.MotivoDesativacao, New With {.htmlAttributes = New With {.class = "form-control"}})
         </dd>
 
     </dl>
